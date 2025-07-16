@@ -1,0 +1,30 @@
+services:
+    auth.provider.tc.keycloak:
+        class: tc\keycloak\auth\provider\auth_keycloak
+        arguments:
+            - '@user'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '@service_container'
+        tags:
+            - { name: auth.provider }
+
+    tc.keycloak.keycloak_service:
+        class: tc\keycloak\lib\KeycloakService
+
+    tc.keycloak.phpbb_user_helper:
+        class: tc\keycloak\helpers\PhpbbUserHelper
+        arguments:
+            - '@dbal.conn'
+            - '@config'
+            - '@user_loader'
+            - '@language'
+            - '@request'
+            - '@passwords.manager'
+            - '@auth'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+
+parameters:
+    # Enable the usage of the super globals (_GET, _POST, _SERVER...)
+    core.disable_super_globals: false
