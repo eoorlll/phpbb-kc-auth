@@ -11,7 +11,8 @@
     }
   ],
   "require": {
-    "php": ">=7.0"
+    "php": ">=7.0",
+    "jumbojett/openid-connect-php": "v1.0.2"
   },
   "autoload": {
     "psr-4": {
@@ -22,6 +23,11 @@
     "display-name": "Keycloak Auth",
     "soft-require": {
       "phpbb/phpbb": ">=3.2.0,<4.0.0@dev"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
     }
   }
 }
